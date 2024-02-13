@@ -1,8 +1,13 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "features": {
-    "ghcr.io/rocker-org/devcontainer-features/r-apt:0": {
-      "installDevTools": true 
-    }
-  }
+    "image": "ghcr.io/rocker-org/devcontainer/r-ver:4",
+    "features": {
+      "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+            "packages": "cli,rlang",
+            "installSystemRequirements": true
+        },
+      "ghcr.io/rocker-org/devcontainer-features/renv-cache:latest": {},
+      "ghcr.io/rocker-org/devcontainer-features/rstudio-server:latest": {}
+    },
+    "postCreateCommand": "R -q -e 'renv::install()'"
+  
 }
